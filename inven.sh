@@ -1,7 +1,9 @@
 #!/bin.bash
+#MAINTAINER clemenko@docker.com
+
 set -eu
 
-for stack_name in $(docker stack ls|grep -v NAME|awk '{print $1}'); do 
+for stack_name in $(docker stack ls|grep -v NAME|awk '{print $1}'); do
  echo "==============" Stack : $stack_name "=============="
  echo ""
   for service in $(docker stack services $stack_name |grep -v REPLICAS|awk '{print $2}' ); do
